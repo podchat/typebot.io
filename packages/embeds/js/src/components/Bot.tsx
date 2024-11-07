@@ -358,9 +358,11 @@ const BotContent = (props: BotContentProps) => {
         onProgressUpdate={setProgressValue}
       />
       <Show
-        when={
-          props.initialChatReply.typebot.settings.general?.isBrandingEnabled
-        }
+        when={false}
+        // when={
+        //   // props.initialChatReply.typebot.settings.general?.isBrandingEnabled
+        //   props.initialChatReply.typebot.settings.general?.isBrandingEnabled
+        // }
       >
         <LiteBadge botContainer={botContainerElement} />
       </Show>
