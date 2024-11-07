@@ -55,7 +55,7 @@ export const SignInPage = ({ type }: Props) => {
             params={{
               terms: <TextLink href={"https://typebot.io/terms-of-service"} />,
               privacy: (
-                <TextLink href={"https://typebot.io/privacy-policies"} />
+                <TextLink href={"https://podchat.id/terms-and-service"} />
               ),
             }}
           />
