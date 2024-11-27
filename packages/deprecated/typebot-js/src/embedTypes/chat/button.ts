@@ -3,7 +3,7 @@ import type { ButtonParams } from "../../types";
 export const createButton = (params?: ButtonParams): HTMLButtonElement => {
   const button = document.createElement("button");
   button.id = "typebot-bubble-button";
-  button.style.backgroundColor = params?.color ?? "#0042DA";
+  button.style.backgroundColor = params?.color ?? "#00b96b";
   button.appendChild(
     createButtonIcon(params?.iconUrl, params?.iconColor, params?.iconStyle),
   );

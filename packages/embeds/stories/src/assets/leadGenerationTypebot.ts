@@ -432,7 +432,7 @@ export const leadGenerationTypebot: StartTypebot = {
         backgroundColor: "#FFFFFF",
         placeholderColor: "#9095A0",
       },
-      buttons: { color: "#FFFFFF", backgroundColor: "#0042DA" },
+      buttons: { color: "#FFFFFF", backgroundColor: "#00b96b" },
       hostAvatar: {
         url: "https://avatars.githubusercontent.com/u/16015833?v=4",
         isEnabled: true,
