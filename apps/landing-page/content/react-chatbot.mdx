@@ -1,7 +1,7 @@
 ---
-title: 'How to Build a React Chatbot: Three Methods Explained'
-description: 'Learn how to build a React chatbot using three methods: no-code, API integration, and full-stack development.'
-publishedAt: '2024-07-11'
+title: "How to Build a React Chatbot: Three Methods Explained"
+description: "Learn how to build a React chatbot using three methods: no-code, API integration, and full-stack development."
+publishedAt: "2024-07-11"
 ---
 
 To enhance user engagement in your React application, adding a chatbot can be a game changer. You don't need to get overwhelmed by complex code. React chatbots offer interactive and responsive interfaces.
@@ -47,32 +47,32 @@ Typebot is an open-source platform that makes it easy to create chatbots for Rea
 ### Real-World Use Cases of React Chatbots
 
 <Table
-  headers={['Industry', 'Use Case', 'Example']}
+  headers={["Industry", "Use Case", "Example"]}
   rows={[
     [
-      'E-commerce',
-      'Product recommendations',
-      'Suggesting items based on browsing history',
+      "E-commerce",
+      "Product recommendations",
+      "Suggesting items based on browsing history",
     ],
     [
-      'Healthcare',
-      'Symptom checker',
-      'Guiding users through initial health assessments',
+      "Healthcare",
+      "Symptom checker",
+      "Guiding users through initial health assessments",
     ],
     [
-      'Finance',
-      'Account management',
-      'Helping users check balances and make transfers',
+      "Finance",
+      "Account management",
+      "Helping users check balances and make transfers",
     ],
     [
-      'Education',
-      'Course enrollment',
-      'Assisting students in selecting and registering for classes',
+      "Education",
+      "Course enrollment",
+      "Assisting students in selecting and registering for classes",
     ],
     [
-      'Travel',
-      'Booking assistance',
-      'Helping users find and book flights or accommodations',
+      "Travel",
+      "Booking assistance",
+      "Helping users find and book flights or accommodations",
     ],
   ]}
 />
@@ -118,13 +118,13 @@ npm install @typebot.io/js @typebot.io/react
 5. Create a new component in your React app:
 
 ```jsx
-import { Bubble } from '@typebot.io/react'
+import { Bubble } from "@typebot.io/react";
 
 const ChatbotComponent = () => {
-  return <Bubble typebot="YOUR_TYPEBOT_ID" />
-}
+  return <Bubble typebot="YOUR_TYPEBOT_ID" />;
+};
 
-export default ChatbotComponent
+export default ChatbotComponent;
 ```
 
 ### Adding Typebot Chatbot to Existing React Applications
@@ -132,7 +132,7 @@ export default ChatbotComponent
 1. Import the **ChatbotComponent** where needed:
 
 ```jsx
-import ChatbotComponent from './ChatbotComponent'
+import ChatbotComponent from "./ChatbotComponent";
 
 function App() {
   return (
@@ -140,7 +140,7 @@ function App() {
       <h1>My React App</h1>
       <ChatbotComponent />
     </div>
-  )
+  );
 }
 ```
 
@@ -149,10 +149,10 @@ function App() {
 ```jsx
 <Bubble
   typebot="your-typebot-id"
-  theme={{ button: { backgroundColor: '#0042DA' } }}
+  theme={{ button: { backgroundColor: "#00b96bA" } }}
   prefilledVariables={{
-    'User Name': 'John Doe',
-    'Page URL': window.location.href,
+    "User Name": "John Doe",
+    "Page URL": window.location.href,
   }}
 />
 ```
@@ -211,9 +211,9 @@ npm install axios daisyui@latest
 
 ```javascript
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  plugins: [require('daisyui')],
-}
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  plugins: [require("daisyui")],
+};
 ```
 
 ### Setting Up Typebot API
@@ -227,22 +227,22 @@ module.exports = {
 Create a `ChatComponent.tsx` file:
 
 ```tsx
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 const ChatComponent: React.FC = () => {
   const [messages, setMessages] = useState<
     Array<{ text: string; isUser: boolean }>
-  >([])
-  const [inputMessage, setInputMessage] = useState('')
+  >([]);
+  const [inputMessage, setInputMessage] = useState("");
 
   const handleSendMessage = async () => {
-    if (inputMessage.trim() === '') return
+    if (inputMessage.trim() === "") return;
 
-    setMessages([...messages, { text: inputMessage, isUser: true }])
-    setInputMessage('')
+    setMessages([...messages, { text: inputMessage, isUser: true }]);
+    setInputMessage("");
 
     // API call will be implemented here
-  }
+  };
 
   return (
     <div className="flex flex-col h-screen">
@@ -250,11 +250,11 @@ const ChatComponent: React.FC = () => {
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`chat ${message.isUser ? 'chat-end' : 'chat-start'}`}
+            className={`chat ${message.isUser ? "chat-end" : "chat-start"}`}
           >
             <div
               className={`chat-bubble ${
-                message.isUser ? 'chat-bubble-primary' : 'chat-bubble-secondary'
+                message.isUser ? "chat-bubble-primary" : "chat-bubble-secondary"
               }`}
             >
               {message.text}
@@ -277,10 +277,10 @@ const ChatComponent: React.FC = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ChatComponent
+export default ChatComponent;
 ```
 
 ### Fetching Responses from Typebot API
@@ -288,25 +288,25 @@ export default ChatComponent
 Implement API calls in `handleSendMessage`:
 
 ```typescript
-import axios from 'axios'
+import axios from "axios";
 
-const TYPEBOT_API_URL = 'https://typebot.io/api/v1/typebots'
-const PUBLIC_ID = 'your_public_id'
-const [sessionId, setSessionId] = useState<string | null>(null)
+const TYPEBOT_API_URL = "https://typebot.io/api/v1/typebots";
+const PUBLIC_ID = "your_public_id";
+const [sessionId, setSessionId] = useState<string | null>(null);
 
 const handleSendMessage = async () => {
-  if (inputMessage.trim() === '') return
+  if (inputMessage.trim() === "") return;
 
-  setMessages([...messages, { text: inputMessage, isUser: true }])
-  setInputMessage('')
+  setMessages([...messages, { text: inputMessage, isUser: true }]);
+  setInputMessage("");
 
   try {
-    let response
+    let response;
     if (!sessionId) {
       response = await axios.post(`${TYPEBOT_API_URL}/${PUBLIC_ID}/startChat`, {
         message: inputMessage,
-      })
-      setSessionId(response.data.sessionId)
+      });
+      setSessionId(response.data.sessionId);
     } else {
       response = await axios.post(
         `${TYPEBOT_API_URL}/${PUBLIC_ID}/continueChat`,
@@ -314,23 +314,23 @@ const handleSendMessage = async () => {
           sessionId,
           message: inputMessage,
         }
-      )
+      );
     }
 
     const botMessages = response.data.messages.map(
       (msg: { content: string }) => ({
         text: msg.content.richText[0].children
           .map((children) => children.text)
-          .join(' '),
+          .join(" "),
         isUser: false,
       })
-    )
+    );
 
-    setMessages((prevMessages) => [...prevMessages, ...botMessages])
+    setMessages((prevMessages) => [...prevMessages, ...botMessages]);
   } catch (error) {
-    console.error('Error sending message:', error)
+    console.error("Error sending message:", error);
   }
-}
+};
 ```
 
 ### Handling User Inputs and Responses in UI
@@ -342,11 +342,11 @@ Update the UI to display bot responses:
   {messages.map((message, index) => (
     <div
       key={index}
-      className={`chat ${message.isUser ? 'chat-end' : 'chat-start'}`}
+      className={`chat ${message.isUser ? "chat-end" : "chat-start"}`}
     >
       <div
         className={`chat-bubble ${
-          message.isUser ? 'chat-bubble-primary' : 'chat-bubble-secondary'
+          message.isUser ? "chat-bubble-primary" : "chat-bubble-secondary"
         }`}
       >
         {message.text}
@@ -364,11 +364,11 @@ Implement error handling:
 try {
   // API calls
 } catch (error) {
-  console.error('Error in chat flow:', error)
+  console.error("Error in chat flow:", error);
   setMessages((prevMessages) => [
     ...prevMessages,
-    { text: 'An error occurred. Please try again.', isUser: false },
-  ])
+    { text: "An error occurred. Please try again.", isUser: false },
+  ]);
 }
 ```
 
@@ -449,27 +449,27 @@ npm install --save-dev typescript @types/express @types/node @types/cors
 Create a `server.ts` file in the `server` directory:
 
 ```typescript
-import express from 'express'
-import cors from 'cors'
-import dotenv from 'dotenv'
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
-const app = express()
-app.use(cors())
-app.use(express.json())
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3001;
 
-app.post('/api/chat', (req, res) => {
-  const userMessage = req.body.message
+app.post("/api/chat", (req, res) => {
+  const userMessage = req.body.message;
   // Chatbot logic will be implemented here
   res.json({
     response: `You said: "${userMessage}". This is a placeholder response.`,
-  })
-})
+  });
+});
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 ```
 
 ### Creating Business Logic
@@ -478,22 +478,22 @@ Implement a simple chatbot logic in `server.ts`:
 
 ```typescript
 const generateResponse = (message: string): string => {
-  if (message.toLowerCase().includes('hello')) {
-    return 'Hello! How can I assist you today?'
-  } else if (message.toLowerCase().includes('help')) {
-    return "I'm here to help. What do you need assistance with?"
-  } else if (message.toLowerCase().includes('bye')) {
-    return 'Goodbye! Have a great day!'
+  if (message.toLowerCase().includes("hello")) {
+    return "Hello! How can I assist you today?";
+  } else if (message.toLowerCase().includes("help")) {
+    return "I'm here to help. What do you need assistance with?";
+  } else if (message.toLowerCase().includes("bye")) {
+    return "Goodbye! Have a great day!";
   } else {
-    return "I'm not sure how to respond to that. Can you please rephrase your question?"
+    return "I'm not sure how to respond to that. Can you please rephrase your question?";
   }
-}
+};
 
-app.post('/api/chat', (req, res) => {
-  const userMessage = req.body.message
-  const botResponse = generateResponse(userMessage)
-  res.json({ response: botResponse })
-})
+app.post("/api/chat", (req, res) => {
+  const userMessage = req.body.message;
+  const botResponse = generateResponse(userMessage);
+  res.json({ response: botResponse });
+});
 ```
 
 ### Designing the Chatbot Interface in React using Daisy UI
@@ -501,32 +501,32 @@ app.post('/api/chat', (req, res) => {
 Create a `ChatComponent.tsx` in your React src directory:
 
 ```tsx
-import React, { useState } from 'react'
-import axios from 'axios'
+import React, { useState } from "react";
+import axios from "axios";
 
 const ChatComponent: React.FC = () => {
   const [messages, setMessages] = useState<
     Array<{ text: string; isUser: boolean }>
-  >([])
-  const [inputMessage, setInputMessage] = useState('')
+  >([]);
+  const [inputMessage, setInputMessage] = useState("");
 
   const handleSendMessage = async () => {
-    if (inputMessage.trim() === '') return
+    if (inputMessage.trim() === "") return;
 
-    setMessages([...messages, { text: inputMessage, isUser: true }])
-    setInputMessage('')
+    setMessages([...messages, { text: inputMessage, isUser: true }]);
+    setInputMessage("");
 
     try {
-      const response = await axios.post('/api/chat', { message: inputMessage })
+      const response = await axios.post("/api/chat", { message: inputMessage });
       setMessages([
         ...messages,
         { text: inputMessage, isUser: true },
         { text: response.data.response, isUser: false },
-      ])
+      ]);
     } catch (error) {
-      console.error('Error sending message:', error)
+      console.error("Error sending message:", error);
     }
-  }
+  };
 
   return (
     <div className="flex flex-col h-screen">
@@ -534,11 +534,11 @@ const ChatComponent: React.FC = () => {
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`chat ${message.isUser ? 'chat-end' : 'chat-start'}`}
+            className={`chat ${message.isUser ? "chat-end" : "chat-start"}`}
           >
             <div
               className={`chat-bubble ${
-                message.isUser ? 'chat-bubble-primary' : 'chat-bubble-secondary'
+                message.isUser ? "chat-bubble-primary" : "chat-bubble-secondary"
               }`}
             >
               {message.text}
@@ -561,10 +561,10 @@ const ChatComponent: React.FC = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ChatComponent
+export default ChatComponent;
 ```
 
 ### Deploying and Testing
@@ -588,12 +588,12 @@ By following these steps, you can create a full-stack **React chatbot** with a c
 Update the axios call in `ChatComponent.tsx` to use an environment variable:
 
 ```typescript
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 // In handleSendMessage:
 const response = await axios.post(`${API_URL}/api/chat`, {
   message: inputMessage,
-})
+});
 ```
 
 ### Error Handling and Debugging
@@ -605,11 +605,11 @@ Implement error handling in both frontend and backend:
 try {
   // API call
 } catch (error) {
-  console.error('Error sending message:', error)
+  console.error("Error sending message:", error);
   setMessages((prevMessages) => [
     ...prevMessages,
-    { text: 'An error occurred. Please try again.', isUser: false },
-  ])
+    { text: "An error occurred. Please try again.", isUser: false },
+  ]);
 }
 
 // Backend (server.ts)
@@ -620,10 +620,10 @@ app.use(
     res: express.Response,
     next: express.NextFunction
   ) => {
-    console.error(err.stack)
-    res.status(500).send('Something broke!')
+    console.error(err.stack);
+    res.status(500).send("Something broke!");
   }
-)
+);
 ```
 
 ### Best Practices for State Management
@@ -663,24 +663,24 @@ Implement branching conversations based on user inputs:
 
 ```typescript
 const generateResponse = (message: string, context: any): string => {
-  if (context.stage === 'greeting') {
-    if (message.toLowerCase().includes('help')) {
-      context.stage = 'help'
-      return 'What kind of help do you need? 1. Technical Support 2. Account Issues 3. Billing'
+  if (context.stage === "greeting") {
+    if (message.toLowerCase().includes("help")) {
+      context.stage = "help";
+      return "What kind of help do you need? 1. Technical Support 2. Account Issues 3. Billing";
     } else {
-      return 'Hello! How can I assist you today?'
+      return "Hello! How can I assist you today?";
     }
-  } else if (context.stage === 'help') {
-    if (message.includes('1')) {
-      return 'For technical support, please describe your issue.'
-    } else if (message.includes('2')) {
-      return 'For account issues, please provide your account number.'
-    } else if (message.includes('3')) {
-      return "For billing inquiries, I'll transfer you to our billing department."
+  } else if (context.stage === "help") {
+    if (message.includes("1")) {
+      return "For technical support, please describe your issue.";
+    } else if (message.includes("2")) {
+      return "For account issues, please provide your account number.";
+    } else if (message.includes("3")) {
+      return "For billing inquiries, I'll transfer you to our billing department.";
     }
   }
-  return "I'm not sure how to respond. Can you please clarify?"
-}
+  return "I'm not sure how to respond. Can you please clarify?";
+};
 ```
 
 ### Integrations with Third-Party Services
@@ -688,13 +688,13 @@ const generateResponse = (message: string, context: any): string => {
 #### OpenAI Integration
 
 ```typescript
-import { Configuration, OpenAIApi } from 'openai'
+import { Configuration, OpenAIApi } from "openai";
 
 // Initialize the OpenAI configuration
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
-})
-const openai = new OpenAIApi(configuration)
+});
+const openai = new OpenAIApi(configuration);
 
 const generateResponse = async (
   message: string,
@@ -702,52 +702,52 @@ const generateResponse = async (
 ): Promise<string> => {
   try {
     const completion = await openai.createChatCompletion({
-      model: 'gpt-3.5-turbo', // You can change this to a different model if needed
+      model: "gpt-3.5-turbo", // You can change this to a different model if needed
       messages: [
         {
-          role: 'system',
-          content: 'You are a helpful customer service assistant.',
+          role: "system",
+          content: "You are a helpful customer service assistant.",
         },
         {
-          role: 'user',
+          role: "user",
           content: `Current stage: ${context.stage}. User message: ${message}`,
         },
       ],
       max_tokens: 150, // Adjust as needed
       temperature: 0.7, // Adjust for more or less randomness in responses
-    })
+    });
 
     return (
       completion.data.choices[0].message?.content ||
       "I'm sorry, I couldn't generate a response."
-    )
+    );
   } catch (error) {
-    console.error('Error calling OpenAI API:', error)
-    return "I'm sorry, there was an error processing your request."
+    console.error("Error calling OpenAI API:", error);
+    return "I'm sorry, there was an error processing your request.";
   }
-}
+};
 ```
 
 #### Google Sheets Integration
 
 ```typescript
-import { google } from 'googleapis'
+import { google } from "googleapis";
 
 const sheets = google.sheets({
-  version: 'v4',
+  version: "v4",
   auth: process.env.GOOGLE_API_KEY,
-})
+});
 
 const logToSheet = async (message: string, response: string) => {
   await sheets.spreadsheets.values.append({
-    spreadsheetId: 'YOUR_SHEET_ID',
-    range: 'Sheet1!A:C',
-    valueInputOption: 'USER_ENTERED',
+    spreadsheetId: "YOUR_SHEET_ID",
+    range: "Sheet1!A:C",
+    valueInputOption: "USER_ENTERED",
     requestBody: {
       values: [[new Date().toISOString(), message, response]],
     },
-  })
-}
+  });
+};
 ```
 
 ### Theming and Custom UI Design
@@ -761,16 +761,16 @@ module.exports = {
     themes: [
       {
         mytheme: {
-          primary: '#4B5563',
-          secondary: '#60A5FA',
-          accent: '#37CDBE',
-          neutral: '#3D4451',
-          'base-100': '#FFFFFF',
+          primary: "#4B5563",
+          secondary: "#60A5FA",
+          accent: "#37CDBE",
+          neutral: "#3D4451",
+          "base-100": "#FFFFFF",
         },
       },
     ],
   },
-}
+};
 ```
 
 ### Performance Optimization
@@ -780,9 +780,9 @@ module.exports = {
 3. Optimize API calls with debouncing or throttling.
 
 ```typescript
-import { useDebounce } from 'use-debounce'
+import { useDebounce } from "use-debounce";
 
-const [value] = useDebounce(text, 1000)
+const [value] = useDebounce(text, 1000);
 ```
 
 Building a **React chatbot** offers diverse approaches, from no-code solutions to full-stack implementations. This article explored three methods: using Typebot for rapid deployment, integrating Typebot's API for customization, and building a complete solution from scratch.
